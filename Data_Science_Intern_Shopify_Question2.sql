@@ -1,5 +1,7 @@
 a.	How many orders were shipped by Speedy Express in total?
 
+/*The solution solve by using join between ORDERS and SHIPPERS table with condition from SHIPPERNAME as "Speedy Express"*/
+
 SELECT COUNT(ORDERS.ORDERID) AS NUMBER_OF_ORDER_SPEEDY_SHIPPED
 FROM ORDERS
 JOIN SHIPPERS
@@ -12,6 +14,9 @@ NUMBER_OF_ORDER_SPEEDY_SHIPPED
 54
 
 b.	What is the last name of the employee with the most orders?
+
+/*Using join between two table ORDERS and EMPLOYEES, by counting ORDERID to get the most number of orders
+sorting by the count of ORDERID in descending, and limit the first value*/
 
 SELECT ORDERS.EMPLOYEEID, EMPLOYEES.LASTNAME, COUNT(ORDERS.ORDERID) AS MOST_ORDER
 FROM ORDERS
@@ -27,6 +32,9 @@ EmployeeID	LastName	MOST_ORDER
 4		Peacock		40
 
 c.	What product was ordered the most by customers in Germany?
+
+/*Using the join in 4 tables PRODUCTS, ORDERDETAILS, ORDERS, CUSTOMERS, sum the number of quantity to get the Total_order
+with condion from customer country in Germany, sorting the sum of quantity in descending, and limit the first value*/
 
 SELECT PRODUCTS.PRODUCTID, PRODUCTS.PRODUCTNAME, SUM(ORDERDETAILS.QUANTITY) AS TOTAL_ORDER, CUSTOMERS.COUNTRY
 FROM PRODUCTS
